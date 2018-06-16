@@ -95,6 +95,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 					$header_image_width = HEADER_IMAGE_WIDTH;
 				}
 				?>
+			<!-- オススメゲームのリンクを挿入予定 -->	
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 				<?php
 				/*
