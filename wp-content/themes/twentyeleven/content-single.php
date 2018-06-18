@@ -10,8 +10,46 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php the_post_thumbnail('thumbnail'); ?><!--アイキャッチ-->
+
+		<!--アイキャッチ-->
+		<?php the_post_thumbnail('thumbnail'); ?>
 		<h1 class="entry-title"><?php the_title(); ?></h1>
+
+		<!--どこかでＭＶＣに整える-->
+		<!--会社名-->
+		<?php $developer_name = SCF::get('developer_name'); ?>
+	   <div id="developer_name"><?php echo $developer_name; ?></div>
+
+		<?php
+			/* translators: used between list items, there is a space after the comma */
+			$categories_list = get_the_category_list( __( ', ', 'twentyeleven' ) );
+
+			/* translators: used between list items, there is a space after the comma */
+			$tag_list = get_the_tag_list( '', __( ', ', 'twentyeleven' ) );
+		if ( '' != $tag_list ) {
+			$utility_text = __( '%2$s</a>.', 'twentyeleven' );
+		} elseif ( '' != $categories_list ) {
+			$utility_text = __( 'This entry was posted in %1$s by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyeleven' );
+		} else {
+			$utility_text = __( 'This entry was posted by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyeleven' );
+		}
+
+			printf(
+				$utility_text,
+				$categories_list,
+				$tag_list,
+				esc_url( get_permalink() ),
+				the_title_attribute( 'echo=0' ),
+				get_the_author(),
+				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
+			);
+		?>
+
+		<!--どこかでＭＶＣに整える-->
+		<!--画像-->
+	 <?php $main_image = SCF::get('main_image'); ?>
+		<div id="main_image"><?php echo $main_image; ?></div>
+		<?php var_dump($main_image) ?>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
 
