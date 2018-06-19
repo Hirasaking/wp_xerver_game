@@ -16,6 +16,12 @@
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 
 		<!--どこかでＭＶＣに整える-->
+		<!--ダウンロードリンク-->
+		<?php $download_url = SCF::get('download_url'); ?>
+	   <div id="download_url"><a href="<?php echo $download_url; ?>">ダウンロード</a>
+			 </div>
+
+		<!--どこかでＭＶＣに整える-->
 		<!--会社名-->
 		<?php $developer_name = SCF::get('developer_name'); ?>
 	   <div id="developer_name"><?php echo $developer_name; ?></div>
@@ -45,11 +51,13 @@
 			);
 		?>
 
-		<!--どこかでＭＶＣに整える-->
-		<!--画像-->
-	 <?php $main_image = SCF::get('main_image'); ?>
-		<div id="main_image"><?php echo $main_image; ?></div>
-		<?php var_dump($main_image) ?>
+		<div class="ac-container">
+			<input id="ac-1" name="accordion-1" type="checkbox" />
+			<label for="ac-1">シリアルコード</label>
+			<div class="ac-small">
+			<p><?php echo $developer_name; ?><?php echo $developer_name; ?></p>
+			</div>
+		</div>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
 
