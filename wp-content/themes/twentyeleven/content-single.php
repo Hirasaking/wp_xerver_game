@@ -11,15 +11,18 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 
+
+
 		<!--アイキャッチ-->
-		<?php the_post_thumbnail('thumbnail'); ?>
-		<h1 class="entry-title"><?php the_title(); ?></h1>
+		<?php //the_post_thumbnail('thumbnail'); ?>
+		<div style="display:inline-block;"><img style="width:120px; height:120px;" src="<?php the_post_thumbnail_url(''); ?>"></div>
+		<div style="display:inline-block;"><h1 style="font-size:150%;"><?php the_title(); ?></h1></div>
+		<!--<h1 class="entry-title"><?php the_title(); ?></h1></div>-->
 
 		<!--どこかでＭＶＣに整える-->
 		<!--ダウンロードリンク-->
 		<?php $download_url = SCF::get('download_url'); ?>
-	   <div id="download_url"><a href="<?php echo $download_url; ?>">ダウンロード</a>
-			 </div>
+	   <div style="padding:1em 0 1em 0;border:1px;border-style:solid;width:100%;text-align:center;"><a href="<?php echo $download_url; ?>">ダウンロード</a></div>
 
 		<!--どこかでＭＶＣに整える-->
 		<!--会社名-->
