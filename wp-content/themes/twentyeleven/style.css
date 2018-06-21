@@ -71,6 +71,7 @@ ac-container{
    line-height: 23px;
    font-size: 14px;
    padding: 20px;
+   text-align:center;
 }
 /* 高さの定義 */
 .ac-container input:checked ~ div.ac-small{

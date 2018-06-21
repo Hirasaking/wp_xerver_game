@@ -15,8 +15,15 @@
 
 		<!--アイキャッチ-->
 		<?php //the_post_thumbnail('thumbnail'); ?>
-		<div style="display:inline-block;"><img style="width:120px; height:120px;" src="<?php the_post_thumbnail_url(''); ?>"></div>
-		<div style="display:inline-block;"><h1 style="font-size:150%;"><?php the_title(); ?></h1></div>
+		<div style="float:left;border:1px solid;">BOX1</div>
+		<div style="border:1px solid;">BOX2</div>
+		<div style="border:1px solid;">BOX3</div>
+
+
+
+		<div style="border:1px solid;display:inline-block;"><img style="width:120px; height:120px;" src="<?php the_post_thumbnail_url(''); ?>"></div>
+		<div style="width:50%;vertical-align:middle; display:table-cell;border:1px solid;display:inline-block;"><h1><?php the_title(); ?></h1></div>
+		<div style="width:50%;vertical-align:middle; display:table-cell;border:1px solid;"><h1><?php the_title(); ?></h1></div>
 		<!--<h1 class="entry-title"><?php the_title(); ?></h1></div>-->
 
 		<!--どこかでＭＶＣに整える-->
@@ -58,7 +65,17 @@
 			<input id="ac-1" name="accordion-1" type="checkbox" />
 			<label for="ac-1">シリアルコード</label>
 			<div class="ac-small">
-			<p><?php echo $developer_name; ?><?php echo $developer_name; ?></p>
+			<p>
+				<?php
+					$serial_1 = SCF::get('serial_1');
+					$serial_2 = SCF::get('serial_2');
+					$serial_3 = SCF::get('serial_3');
+
+					if($serial_1 != '') echo $serial_1 . '<br>';
+					if($serial_2 != '') echo $serial_2 . '<br>';
+					if($serial_3 != '') echo $serial_3 . '<br>';
+				?>
+			</p>
 			</div>
 		</div>
 
