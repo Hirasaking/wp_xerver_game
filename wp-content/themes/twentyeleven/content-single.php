@@ -12,29 +12,24 @@
 	<header class="entry-header">
 
 
-
 		<!--アイキャッチ-->
 		<?php //the_post_thumbnail('thumbnail'); ?>
-		<div style="float:left;border:1px solid;">BOX1</div>
-		<div style="border:1px solid;">BOX2</div>
-		<div style="border:1px solid;">BOX3</div>
-
-
-
-		<div style="border:1px solid;display:inline-block;"><img style="width:120px; height:120px;" src="<?php the_post_thumbnail_url(''); ?>"></div>
-		<div style="width:50%;vertical-align:middle; display:table-cell;border:1px solid;display:inline-block;"><h1><?php the_title(); ?></h1></div>
-		<div style="width:50%;vertical-align:middle; display:table-cell;border:1px solid;"><h1><?php the_title(); ?></h1></div>
 		<!--<h1 class="entry-title"><?php the_title(); ?></h1></div>-->
-
-		<!--どこかでＭＶＣに整える-->
-		<!--ダウンロードリンク-->
-		<?php $download_url = SCF::get('download_url'); ?>
-	   <div style="padding:1em 0 1em 0;border:1px;border-style:solid;width:100%;text-align:center;"><a href="<?php echo $download_url; ?>">ダウンロード</a></div>
 
 		<!--どこかでＭＶＣに整える-->
 		<!--会社名-->
 		<?php $developer_name = SCF::get('developer_name'); ?>
-	   <div id="developer_name"><?php echo $developer_name; ?></div>
+
+		<div style="display: grid; grid-template-rows: 100px 50px; grid-template-columns: 150px 1fr;">
+		    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;"><img style="width:120px; height:120px;" src="<?php the_post_thumbnail_url(''); ?>"></div>
+		    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><h1><?php the_title(); ?></h1></div>
+				<div style="grid-row: 2 / 3; grid-column: 2 / 3; background: #88f;"><?php echo $developer_name; ?></div>
+		</div>
+
+		<!--どこかでＭＶＣに整える-->
+		<!--ダウンロードリンク-->
+		<?php $download_url = SCF::get('download_url'); ?>
+		<!--<div class="download-button"><a href="<?php echo $download_url; ?>">ダウンロード</a></div>-->
 
 		<?php
 			/* translators: used between list items, there is a space after the comma */
@@ -61,6 +56,10 @@
 			);
 		?>
 
+		<div class="link_box">ダウンロード
+		    <a href="<?php echo $download_url; ?>">ダウンロード</a>
+		</div>
+
 		<div class="ac-container">
 			<input id="ac-1" name="accordion-1" type="checkbox" />
 			<label for="ac-1">シリアルコード</label>
@@ -70,10 +69,12 @@
 					$serial_1 = SCF::get('serial_1');
 					$serial_2 = SCF::get('serial_2');
 					$serial_3 = SCF::get('serial_3');
+					$serial_3 = SCF::get('serial_4');
 
 					if($serial_1 != '') echo $serial_1 . '<br>';
 					if($serial_2 != '') echo $serial_2 . '<br>';
 					if($serial_3 != '') echo $serial_3 . '<br>';
+					if($serial_4 != '') echo $serial_4;
 				?>
 			</p>
 			</div>
