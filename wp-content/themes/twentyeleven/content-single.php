@@ -36,6 +36,7 @@
 			$categories_list = get_the_category_list( __( ', ', 'twentyeleven' ) );
 
 			/* translators: used between list items, there is a space after the comma */
+			/*
 			$tag_list = get_the_tag_list( '', __( ', ', 'twentyeleven' ) );
 		if ( '' != $tag_list ) {
 			$utility_text = __( '%2$s</a>.', 'twentyeleven' );
@@ -54,11 +55,10 @@
 				get_the_author(),
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
 			);
+			*/
 		?>
 
-		<div class="link_box">ダウンロード
-		    <a href="<?php echo $download_url; ?>">ダウンロード</a>
-		</div>
+		<div class="link_box"><a href="<?php echo $download_url; ?>"></a>ダウンロード</div>
 
 		<div class="ac-container">
 			<input id="ac-1" name="accordion-1" type="checkbox" />
@@ -79,6 +79,15 @@
 			</p>
 			</div>
 		</div>
+
+		<?php
+			$page_info = get_page_by_path('rpg');
+			$page = get_post($page_info);
+			echo $page->post_content;
+		?>
+
+
+
 
 		<?php if ( 'post' == get_post_type() ) : ?>
 
