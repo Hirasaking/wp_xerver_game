@@ -59,7 +59,7 @@
 		?>
 
 		<div class="link_box"><a href="<?php echo $download_url; ?>"></a>ダウンロード</div>
-		<div class="link_box"><a href="<?php echo $download_url; ?>"></a>シリアル交換掲示板</div>
+		<div class="link_box"><a href="#comments"></a>シリアル交換掲示板</div>
 
 		<div class="ac-container">
 			<input id="ac-1" name="accordion-1" type="checkbox" />
