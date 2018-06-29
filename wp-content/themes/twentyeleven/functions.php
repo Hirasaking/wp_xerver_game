@@ -376,6 +376,38 @@ function twentyeleven_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'twentyeleven_excerpt_length' );
 
+// メールアドレスが公開されることはありませんの文言を変更
+add_filter('comment_form_defaults', 'change_comment_email_notes');
+
+function change_comment_email_notes( $defaults ) {
+    $defaults['comment_notes_before'] = '<p class="comment-notes"><span id="email-notes">メールアドレスの入力は任意です！</span></p>';
+    return $defaults;
+}
+
+// コメントからEmailとウェブサイトを削除
+function my_comment_form_remove($arg) {
+$arg['url'] = '';
+$arg['email'] = '';
+return $arg;
+}
+add_filter('comment_form_default_fields', 'my_comment_form_remove');
+
+// 「メールアドレスが公開されることはありません」を削除
+function my_comment_form_before( $defaults){
+$defaults['comment_notes_before'] = '';
+return $defaults;
+}
+add_filter( "comment_form_defaults", "my_comment_form_before");
+
+// 「HTMLタグと属性が使えます…」を削除
+function my_comment_form_after($args){
+$args['comment_notes_after'] = '';
+return $args;
+}
+add_filter("comment_form_defaults","my_comment_form_after");
+
+
+
 if ( ! function_exists( 'twentyeleven_continue_reading_link' ) ) :
 	/**
 	 * Return a "Continue Reading" link for excerpts
