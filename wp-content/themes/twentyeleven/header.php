@@ -96,6 +96,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 				}
 				?>
 			<!-- オススメゲームのリンクを挿入予定 -->
+                        <div style="background-color: #ddd; text-align: center; font: 2em bold;">シリアル最新情報</div>
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 				<?php
 				/*

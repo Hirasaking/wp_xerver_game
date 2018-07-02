@@ -20,12 +20,14 @@
 		<!--会社名-->
 		<?php $developer_name = SCF::get('developer_name'); ?>
 
-		<div style="display: grid; grid-template-rows: 100px 50px; grid-template-columns: 150px 1fr;">
-		    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;"><img style="width:120px; height:120px;" src="<?php the_post_thumbnail_url(''); ?>"></div>
-		    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><h1><?php the_title(); ?></h1></div>
-				<div style="grid-row: 2 / 3; grid-column: 2 / 3; background: #88f;"><?php echo $developer_name; ?></div>
+		<div style="display: grid; grid-template-rows: 40px 30px; grid-template-columns: 70px 1fr;">
+                    <div style="grid-row: 1 / 3; grid-column: 1 / 2;text-align:center;margin-top:0.4em"><p class="thumnail-70"><?php the_post_thumbnail(array(60,60)); ?><p></div>
+		    <div style="grid-row: 1 / 2; grid-column: 2 / 3; "><h1 class="entry-title"><?php the_title(); ?></h1></div>
+                    <div style="grid-row: 2 / 3; grid-column: 2 / 3; "><?php echo $developer_name; ?></div>
 		</div>
 
+                
+                
 		<!--どこかでＭＶＣに整える-->
 		<!--ダウンロードリンク-->
 		<?php $download_url = SCF::get('download_url'); ?>
@@ -96,7 +98,7 @@
 			<a href="<?php echo $af_url_1; ?>"></a>
 			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
 			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('52'); ?>">
+						<img src="<?php echo get_the_post_thumbnail_url('51'); ?>">
 					</div>
 			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
 			</div>
@@ -106,7 +108,7 @@
 			<a href="<?php echo $af_url_1; ?>"></a>
 			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
 			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('52'); ?>">
+						<img src="<?php echo get_the_post_thumbnail_url('51'); ?>">
 					</div>
 			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
 			</div>
@@ -116,22 +118,7 @@
 			<a href="<?php echo $af_url_1; ?>"></a>
 			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
 			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('52'); ?>">
-					</div>
-			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
-			</div>
-		</div>
-
-
-
-		<div style="text-align:center; font-size:2em;">オススメランキングTOP5</div>
-
-		<!--固定ページを読み込み-->
-		<div class="link_box_af">
-			<a href="<?php echo $af_url_1; ?>"></a>
-			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
-			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('52'); ?>">
+						<img src="<?php echo get_the_post_thumbnail_url('51'); ?>">
 					</div>
 			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
 			</div>
@@ -141,42 +128,11 @@
 			<a href="<?php echo $af_url_1; ?>"></a>
 			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
 			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('52'); ?>">
+						<img src="<?php echo get_the_post_thumbnail_url('51'); ?>">
 					</div>
 			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
 			</div>
 		</div>
-
-		<div class="link_box_af">
-			<a href="<?php echo $af_url_1; ?>"></a>
-			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
-			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('52'); ?>">
-					</div>
-			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
-			</div>
-		</div>
-
-		<div class="link_box_af">
-			<a href="<?php echo $af_url_1; ?>"></a>
-			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
-			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('52'); ?>">
-					</div>
-			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
-			</div>
-		</div>
-
-		<div class="link_box_af">
-			<a href="<?php echo $af_url_1; ?>"></a>
-			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
-			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('52'); ?>">
-					</div>
-			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
-			</div>
-		</div>
-
 
 
 

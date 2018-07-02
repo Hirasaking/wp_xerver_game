@@ -13,8 +13,20 @@ Text Domain: twentyeleven
 
 /* =Reset default browser CSS. Based on work by Eric Meyer.
 -------------------------------------------------------------- */
+p.recommend {
+    text-align: center;
+    margin:0px 0px 5px;
+    padding:0px auto 0px;
+    border-bottom: solid #ddd 2px;
+    font-size: 30px
+}
 
 
+p.thumnail-70 img {
+    border-radius: 5px;
+    margin:0px;
+    padding:1px;
+}
 
 /* download-button
 ----------------------------------------------- */
@@ -42,7 +54,10 @@ Text Domain: twentyeleven
   width:100%;
   padding:0;
   border:solid 1px #CCC;
-  margin:20px auto 20px;
+  margin:0.5em auto 0.5em;
+  border-radius: 10px;        /* CSS3草案 */  
+  -webkit-border-radius: 10px;    /* Safari,Google Chrome用 */  
+  -moz-border-radius: 10px;   /* Firefox用 */ 
 }
 
 .link_box_af a{
@@ -817,7 +832,7 @@ a:hover {
 
 #main {
 	clear: both;
-	padding: 1.625em 0 0;
+	/* padding: 1.625em 0 0; */
 }
 .page-title {
 	color: #666;
@@ -852,16 +867,17 @@ a:hover {
 }
 .entry-title,
 .entry-header .entry-meta {
-	padding-right: 76px;
+	/* padding-right: 76px; */
 }
 .entry-title {
 	clear: both;
 	color: #222;
-	font-size: 26px;
+	font-size: 20px;
 	font-weight: bold;
 	line-height: 1.5em;
-	padding-bottom: .3em;
-	padding-top: 15px;
+	padding-bottom: 0px;
+	padding-top: 6px;
+        
 }
 .entry-title,
 .entry-title a {
@@ -887,7 +903,7 @@ a:hover {
 }
 .entry-content,
 .entry-summary {
-	padding: 1.625em 0 0;
+	/* padding: 1.625em 0 0; */
 }
 .entry-content .more-link {
 	white-space: nowrap;
@@ -2493,7 +2509,7 @@ p.comment-form-comment {
 @media (max-width: 800px) {
 	/* Simplify the basic layout */
 	#main #content {
-		margin: 0 7.6%;
+		margin: 0 2%;
 		width: auto;
 	}
 	#nav-below {
@@ -2623,13 +2639,13 @@ p.comment-form-comment {
 		font-size: 12px;
 	}
 	.entry-title {
-		font-size: 21px;
+		font-size: 18px;
 	}
 	.featured-post .entry-title {
 		font-size: 14px;
 	}
 	.singular .entry-title {
-		font-size: 28px;
+		font-size: 18px;
 	}
 	.entry-meta {
 		font-size: 12px;

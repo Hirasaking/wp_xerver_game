@@ -16,7 +16,17 @@ get_header(); ?>
 
 		<div id="primary">
 			<div id="content" role="main">
+                            <p class="recommend">おすすめゲーム</p>
+                            <div style="text-align: center">
+                                <p class="thumnail-70">
+                                <a href="/"><?php echo get_the_post_thumbnail(52,array(80,80)); ?></a>
+                                <a href="/"><?php echo get_the_post_thumbnail(52,array(80,80)); ?></a>
+                                <a href="/"><?php echo get_the_post_thumbnail(52,array(80,80)); ?></a>
+                                <a href="/"><?php echo get_the_post_thumbnail(52,array(80,80)); ?></a>
+                                </p>
+                            </div>    
 
+                            <p class="recommend">最新シリアル付きゲーム</p>
 			<?php if ( have_posts() ) : ?>
 
 				<?php twentyeleven_content_nav( 'nav-above' ); ?>
@@ -47,9 +57,9 @@ get_header(); ?>
 				</article><!-- #post-0 -->
 
 			<?php endif; ?>
+                            <p class="recommend">シリアル検索</p>
 
 			</div><!-- #content -->
 		</div><!-- #primary -->
-
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

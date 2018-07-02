@@ -2418,7 +2418,7 @@ msgstr "最近の投稿"
 #: wp-includes/theme.php:1973
 msgctxt "Theme starter content"
 msgid "Recent Comments"
-msgstr "最近のコメント"
+msgstr "シリアル交換掲示板-最新コメント"
 
 #: wp-includes/theme.php:1970
 msgctxt "Theme starter content"
