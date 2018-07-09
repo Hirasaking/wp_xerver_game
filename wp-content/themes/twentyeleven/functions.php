@@ -859,5 +859,6 @@ function breadcrumb() {
 }
 
 function af_wall(){
-    echo 'koteiページ設置予定';
+    
+    
 }

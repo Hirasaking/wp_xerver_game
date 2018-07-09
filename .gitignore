@@ -1,1 +1,4 @@
 /nbproject/private/
+
+# .uploadsフォルダを除外
+wp-content/uploads/

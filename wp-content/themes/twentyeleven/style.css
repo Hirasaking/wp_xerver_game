@@ -1953,10 +1953,13 @@ video {
 	letter-spacing: 0.1em;
 	line-height: em;
 	text-transform: uppercase;
+        border-left:solid 5px #6e6eff;
+        padding-left:0.5em;
 }
 .widget ul {
 	font-size: 15px;
 	margin: 0;
+        padding-left:1.5em;
 }
 .widget ul ul {
 	margin-left: 1.5em;
