@@ -32,8 +32,16 @@
 			$utility_text = __( '3This entry was posted by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyeleven' );
 		}
                  */
-                ?>
 
+                
+                
+                ?>
+		<!--アイキャッチ-->
+		<?php //the_post_thumbnail('thumbnail'); ?>
+		<!--<h1 class="entry-title"><?php the_title(); ?></h1></div>-->
+
+		<!--どこかでＭＶＣに整える-->
+		<!--会社名-->
 		<?php $developer_name = SCF::get('developer_name'); ?>
 
 		<div style="display: grid; grid-template-rows: 40px 30px; grid-template-columns: 70px 1fr;">
@@ -41,6 +49,7 @@
 		    <div style="grid-row: 1 / 2; grid-column: 2 / 3; "><h1 class="entry-title"><?php the_title(); ?></h1></div>
                     <div style="grid-row: 2 / 3; grid-column: 2 / 3; "><?php echo $developer_name; ?></div>
 		</div>
+                
                 
 		<?php the_content(); ?>
 		<?php
@@ -119,49 +128,7 @@
 		$af_url_1 = get_post_meta(52, 'ad_1', true); //アフィリエイトＵＲＬ取得
 		?>
 
-		<div style="text-align:center; font-size:2em;">特典が使えるゲーム</div>
-		<div class="link_box_af">
-			<a href="<?php echo $af_url_1; ?>"></a>
-			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
-			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('51'); ?>">
-					</div>
-			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
-			</div>
-		</div>
-
-		<div class="link_box_af">
-			<a href="<?php echo $af_url_1; ?>"></a>
-			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
-			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('51'); ?>">
-					</div>
-			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
-			</div>
-		</div>
-
-		<div class="link_box_af">
-			<a href="<?php echo $af_url_1; ?>"></a>
-			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
-			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('51'); ?>">
-					</div>
-			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
-			</div>
-		</div>
-
-		<div class="link_box_af">
-			<a href="<?php echo $af_url_1; ?>"></a>
-			<div style="display: grid; grid-template-rows: 130px; grid-template-columns: 130px 1fr;">
-			    <div style="grid-row: 1 / 3; grid-column: 1 / 2; background: #f88;">
-						<img src="<?php echo get_the_post_thumbnail_url('51'); ?>">
-					</div>
-			    <div style="grid-row: 1 / 2; grid-column: 2 / 3; background: #8f8;"><?php echo $af_title_1; ?></div>
-			</div>
-		</div>
-
-
-
+                <?php af_wall(); ?>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
 

@@ -78,37 +78,7 @@ get_header(); ?>
                 
     <div id="primary">
             <div id="content" role="main">
-                <p class="recommend">人気ランキング</p>
-
                 <?php af_wall(); ?>
-                <?php //あとからMVCにする　?>
-                        <div class="link_box_af">
-                            <a href="<?php echo get_permalink(40); ?>"></a>
-                            <div style="display: grid; grid-template-rows: 70px; grid-template-columns: 70px 1fr;">
-                                <div style="grid-row: 1 / 2; grid-column: 1 / 1;text-align:center;margin-top:0.4em"><p class="thumnail-70"><?php echo get_the_post_thumbnail(40,array(60,60)); ?><p></div>
-                                <div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 class="entry-title"><?php $catch_copy = get_post_meta(40,'catch_copy',true);echo $catch_copy; ?></h1></div>
-                            </div>
-        		</div>
-
-                        <hr style="padding:0px;margin: 0px">
-
-                        <div class="link_box_af">
-                            <a href="<?php echo get_permalink(40); ?>"></a>
-                            <div style="display: grid; grid-template-rows: 70px; grid-template-columns: 70px 1fr;">
-                                <div style="grid-row: 1 / 2; grid-column: 1 / 1;text-align:center;margin-top:0.4em"><p class="thumnail-70"><?php echo get_the_post_thumbnail(40,array(60,60)); ?><p></div>
-                                <div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 class="entry-title"><?php $catch_copy = get_post_meta(40,'catch_copy',true);echo $catch_copy; ?></h1></div>
-                            </div>
-        		</div>
-
-                        <hr style="padding:0px;margin: 0px">
-
-                        <div class="link_box_af">
-                            <a href="<?php echo get_permalink(40); ?>"></a>
-                            <div style="display: grid; grid-template-rows: 70px; grid-template-columns: 70px 1fr;">
-                                <div style="grid-row: 1 / 2; grid-column: 1 / 1;text-align:center;margin-top:0.4em"><p class="thumnail-70"><?php echo get_the_post_thumbnail(40,array(60,60)); ?><p></div>
-                                <div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 class="entry-title"><?php $catch_copy = get_post_meta(40,'catch_copy',true);echo $catch_copy; ?></h1></div>
-                            </div>
-        		</div>
             </div><!-- #content -->
 
     </div><!-- #primary -->

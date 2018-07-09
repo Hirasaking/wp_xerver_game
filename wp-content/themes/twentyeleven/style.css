@@ -15,7 +15,7 @@ Text Domain: twentyeleven
 -------------------------------------------------------------- */
 p.recommend {
     text-align: center;
-    margin:0px 0px 5px;
+    margin:0.5em 0 0.5em;
     background-color: #ddd;
     padding:0px auto 0px;
     font-size: 150%
@@ -1948,13 +1948,14 @@ video {
 }
 .widget-title {
 	color: #666;
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: 500;
 	letter-spacing: 0.1em;
 	line-height: em;
 	text-transform: uppercase;
         border-left:solid 5px #6e6eff;
         padding-left:0.5em;
+        margin:0.5em 0 0.5em;
 }
 .widget ul {
 	font-size: 15px;
@@ -1966,7 +1967,7 @@ video {
 }
 .widget ul li {
 	color: #777;
-	font-size: 13px;
+	font-size: 15px;
 }
 .widget a {
 	font-weight: bold;
@@ -2528,7 +2529,7 @@ p.comment-form-comment {
 	}
 	#main #secondary {
 		float: none;
-		margin: 0 7.6%;
+		margin: 0 1em 0;
 		width: auto;
 	}
 	/* Simplify the showcase template */

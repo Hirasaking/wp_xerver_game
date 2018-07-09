@@ -859,6 +859,62 @@ function breadcrumb() {
 }
 
 function af_wall(){
+
+    //あとからMVCにする
+    $ad_catch1 = get_post_meta(1,'catch_copy',true); //キャッチコピー取得
+    $ad_url1 = get_permalink(1);//URL取得
+    $ad_thumbnail1 = get_the_post_thumbnail(1,array(60,60));
+
     
+    echo'<p class="recommend">イチオシ厳選ゲーム</p>';
+
     
+    echo 
+    '<div class="link_box_af">'
+        . '<a href="'. $ad_url1 .'"></a>'
+        . '<div style="display: grid; grid-template-rows: 70px; grid-template-columns: 70px 1fr;">'
+        . '<div style="grid-row: 1 / 2; grid-column: 1 / 1;text-align:center;margin-top:0.4em"><p class="thumnail-70">' . $ad_thumbnail1 .'<p></div>'
+        . '<div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 class="entry-title">' . $ad_catch1 . '</h1></div>'
+        . '</div>'
+    . '</div>';
+
+    echo '<hr style="padding:0px;margin:0 0 0.5em">';
+
+        echo 
+    '<div class="link_box_af">'
+        . '<a href="'. $ad_url1 .'"></a>'
+        . '<div style="display: grid; grid-template-rows: 70px; grid-template-columns: 70px 1fr;">'
+        . '<div style="grid-row: 1 / 2; grid-column: 1 / 1;text-align:center;margin-top:0.4em"><p class="thumnail-70">' . $ad_thumbnail1 .'<p></div>'
+        . '<div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 class="entry-title">' . $ad_catch1 . '</h1></div>'
+        . '</div>'
+    . '</div>';
+
+    echo '<hr style="padding:0px;margin:0 0 0.5em">';
+
+    echo 
+    '<div class="link_box_af">'
+        . '<a href="'. $ad_url1 .'"></a>'
+        . '<div style="display: grid; grid-template-rows: 70px; grid-template-columns: 70px 1fr;">'
+        . '<div style="grid-row: 1 / 2; grid-column: 1 / 1;text-align:center;margin-top:0.4em"><p class="thumnail-70">' . $ad_thumbnail1 .'<p></div>'
+        . '<div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 class="entry-title">' . $ad_catch1 . '</h1></div>'
+        . '</div>'
+    . '</div>';
+
+
+}
+
+// ページの追加
+add_action( 'admin_menu', 'register_my_custom_menu_page' );
+function register_my_custom_menu_page() {
+    add_menu_page('管理画面の使い方', '管理用メニュー', 'manage_options', 'manual', 'add_manual_page', 'dashicons-welcome-learn-more', 3);
+}
+ 
+// ページの中身のHTML
+function add_manual_page() {
+?>
+<div class="manual-contents">
+    <h1>マニュアルページ</h1>
+    <p>このページでは管理画面の使い方について説明する予定です。</p>
+</div>
+<?php
 }
