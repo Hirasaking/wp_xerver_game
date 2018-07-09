@@ -16,9 +16,9 @@ Text Domain: twentyeleven
 p.recommend {
     text-align: center;
     margin:0px 0px 5px;
+    background-color: #ddd;
     padding:0px auto 0px;
-    border-bottom: solid #ddd 2px;
-    font-size: 30px
+    font-size: 150%
 }
 
 
@@ -26,6 +26,13 @@ p.thumnail-70 img {
     border-radius: 5px;
     margin:0px;
     padding:1px;
+}
+
+.breadcrumb{
+    position:relative;
+    padding:0.5em 0.5em;
+    margin-left: 2px;
+    border-left:solid 5px #6e6eff;
 }
 
 /* download-button
@@ -53,7 +60,7 @@ p.thumnail-70 img {
   position:relative;
   width:100%;
   padding:0;
-  border:solid 1px #CCC;
+  /*border:solid 1px #CCC;*/
   margin:0.5em auto 0.5em;
   border-radius: 10px;        /* CSS3草案 */  
   -webkit-border-radius: 10px;    /* Safari,Google Chrome用 */  
@@ -73,13 +80,13 @@ p.thumnail-70 img {
 /* accordion
 ----------------------------------------------- */
 ac-container{
-    width: auto;
+    width: 80%;
     margin: 0px auto;
 }
 .ac-container label{
     width: 100%px;
     text-align: center;
-    background: #ff9b9b;
+    background: #6e6eff;
     margin: auto;
     padding: 10px 5px;
     position: relative;
@@ -89,7 +96,7 @@ ac-container{
     color: #fff;
 }
 .ac-container label:hover{
-    background: rgba( 255, 155, 155, 0.55 );
+    background: rgba( 172, 172, 255, 0.55 );
     -webkit-transition: all .3s;
     transition: all .3s;
 }
@@ -449,7 +456,7 @@ body, input, textarea {
 	line-height: 1.625;
 }
 body {
-	background: #e2e2e2;
+	/*background: #e2e2e2;*/
 }
 #page {
 	background: #fff;
@@ -1941,10 +1948,10 @@ video {
 }
 .widget-title {
 	color: #666;
-	font-size: 10px;
+	font-size: 15px;
 	font-weight: 500;
 	letter-spacing: 0.1em;
-	line-height: 2.6em;
+	line-height: em;
 	text-transform: uppercase;
 }
 .widget ul {

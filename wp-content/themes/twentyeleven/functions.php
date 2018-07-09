@@ -1,43 +1,4 @@
 <?php
-/**
- * Twenty Eleven functions and definitions
- *
- * Sets up the theme and provides some helper functions. Some helper functions
- * are used in the theme as custom template tags. Others are attached to action and
- * filter hooks in WordPress to change core functionality.
- *
- * The first function, twentyeleven_setup(), sets up the theme by registering support
- * for various features in WordPress, such as post thumbnails, navigation menus, and the like.
- *
- * When using a child theme (see https://codex.wordpress.org/Theme_Development and
- * https://codex.wordpress.org/Child_Themes), you can override certain functions
- * (those wrapped in a function_exists() call) by defining them first in your child theme's
- * functions.php file. The child theme's functions.php file is included before the parent
- * theme's file, so the child theme functions would be used.
- *
- * Functions that are not pluggable (not wrapped in function_exists()) are instead attached
- * to a filter or action hook. The hook can be removed by using remove_action() or
- * remove_filter() and you can attach your own function to the hook.
- *
- * We can remove the parent theme's hook only after it is attached, which means we need to
- * wait until setting up the child theme:
- *
- * <code>
- * add_action( 'after_setup_theme', 'my_child_theme_setup' );
- * function my_child_theme_setup() {
- *     // We are providing our own filter for excerpt_length (or using the unfiltered value)
- *     remove_filter( 'excerpt_length', 'twentyeleven_excerpt_length' );
- *     ...
- * }
- * </code>
- *
- * For more information on hooks, actions, and filters, see https://codex.wordpress.org/Plugin_API.
- *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
- */
-
 // Set the content width based on the theme's design and stylesheet.
 if ( ! isset( $content_width ) ) {
 	$content_width = 584;
@@ -49,35 +10,8 @@ if ( ! isset( $content_width ) ) {
 add_action( 'after_setup_theme', 'twentyeleven_setup' );
 
 if ( ! function_exists( 'twentyeleven_setup' ) ) :
-	/**
-	 * Set up theme defaults and registers support for various WordPress features.
-	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which runs
-	 * before the init hook. The init hook is too late for some features, such as indicating
-	 * support post thumbnails.
-	 *
-	 * To override twentyeleven_setup() in a child theme, add your own twentyeleven_setup to your child theme's
-	 * functions.php file.
-	 *
-	 * @uses load_theme_textdomain()    For translation/localization support.
-	 * @uses add_editor_style()         To style the visual editor.
-	 * @uses add_theme_support()        To add support for post thumbnails, automatic feed links, custom headers
-	 *                                  and backgrounds, and post formats.
-	 * @uses register_nav_menus()       To add support for navigation menus.
-	 * @uses register_default_headers() To register the default custom header images provided with the theme.
-	 * @uses set_post_thumbnail_size()  To set a custom post thumbnail size.
-	 *
-	 * @since Twenty Eleven 1.0
-	 */
 	function twentyeleven_setup() {
 
-		/*
-		 * Make Twenty Eleven available for translation.
-		 * Translations can be added to the /languages/ directory.
-		 * If you're building a theme based on Twenty Eleven, use
-		 * a find and replace to change 'twentyeleven' to the name
-		 * of your theme in all the template files.
-		 */
 		load_theme_textdomain( 'twentyeleven', get_template_directory() . '/languages' );
 
 		// This theme styles the visual editor with editor-style.css to match the theme style.
@@ -371,41 +305,71 @@ endif; // twentyeleven_admin_header_image
  * @param int $length The number of excerpt characters.
  * @return int The filtered number of characters.
  */
+
+
+/**
+ * カスタムフィールドを検索対象に含めます。(「-キーワード」のようなNOT検索にも対応します)
+ */
+function posts_search_custom_fields( $orig_search, $query ) {
+	if ( $query->is_search() && $query->is_main_query() && ! is_admin() ) {
+		// 4.4のWP_Query::parse_search()の処理を流用しています。(検索語の分割処理などはすでにquery_vars上にセット済のため省きます)
+		global $wpdb;
+		$q = $query->query_vars;
+		$n = ! empty( $q['exact'] ) ? '' : '%';
+		$searchand = '';
+ 
+		foreach ( $q['search_terms'] as $term ) {
+			$include = '-' !== substr( $term, 0, 1 );
+			if ( $include ) {
+				$like_op  = 'LIKE';
+				$andor_op = 'OR';
+			} else {
+				$like_op  = 'NOT LIKE';
+				$andor_op = 'AND';
+				$term     = substr( $term, 1 );
+			}
+			$like = $n . $wpdb->esc_like( $term ) . $n;
+			// カスタムフィールド用の検索条件を追加します。
+			$search .= $wpdb->prepare( "{$searchand}(($wpdb->posts.post_title $like_op %s) $andor_op ($wpdb->posts.post_content $like_op %s) $andor_op (custom.meta_value $like_op %s))", $like, $like, $like );
+			$searchand = ' AND ';
+		}
+		if ( ! empty( $search ) ) {
+			$search = " AND ({$search}) ";
+			if ( ! is_user_logged_in() )
+				$search .= " AND ($wpdb->posts.post_password = '') ";
+		}
+		return $search;
+	}
+	else {
+		return $orig_search;
+	}
+}
+add_filter( 'posts_search', 'posts_search_custom_fields', 10, 2 );
+/**
+ * カスタムフィールド検索用のJOINを行います。
+ */
+function posts_join_custom_fields( $join, $query ) {
+	if ( $query->is_search() && $query->is_main_query() && ! is_admin() ) {
+		// group_concat()したmeta_valueをJOINすることでレコードの重複を除きつつ検索しやすくします。
+		global $wpdb;
+		$join .= " INNER JOIN ( ";
+		$join .= " SELECT post_id, group_concat( meta_value separator ' ') AS meta_value FROM $wpdb->postmeta ";
+		// $join .= " WHERE meta_key IN ( 'test' ) ";
+		$join .= " GROUP BY post_id ";
+		$join .= " ) AS custom ON ($wpdb->posts.ID = custom.post_id) ";
+	}
+	return $join;
+}
+add_filter( 'posts_join', 'posts_join_custom_fields', 10, 2 );
+
+
+
+
+
 function twentyeleven_excerpt_length( $length ) {
 	return 40;
 }
 add_filter( 'excerpt_length', 'twentyeleven_excerpt_length' );
-
-// メールアドレスが公開されることはありませんの文言を変更
-add_filter('comment_form_defaults', 'change_comment_email_notes');
-
-function change_comment_email_notes( $defaults ) {
-    $defaults['comment_notes_before'] = '<p class="comment-notes"><span id="email-notes">メールアドレスの入力は任意です！</span></p>';
-    return $defaults;
-}
-
-// コメントからEmailとウェブサイトを削除
-function my_comment_form_remove($arg) {
-$arg['url'] = '';
-$arg['email'] = '';
-return $arg;
-}
-add_filter('comment_form_default_fields', 'my_comment_form_remove');
-
-// 「メールアドレスが公開されることはありません」を削除
-function my_comment_form_before( $defaults){
-$defaults['comment_notes_before'] = '';
-return $defaults;
-}
-add_filter( "comment_form_defaults", "my_comment_form_before");
-
-// 「HTMLタグと属性が使えます…」を削除
-function my_comment_form_after($args){
-$args['comment_notes_after'] = '';
-return $args;
-}
-add_filter("comment_form_defaults","my_comment_form_after");
-
 
 
 if ( ! function_exists( 'twentyeleven_continue_reading_link' ) ) :
@@ -844,3 +808,52 @@ function twentyeleven_widget_tag_cloud_args( $args ) {
 	return $args;
 }
 add_filter( 'widget_tag_cloud_args', 'twentyeleven_widget_tag_cloud_args' );
+
+
+// メールアドレスが公開されることはありませんの文言を変更
+add_filter('comment_form_defaults', 'change_comment_email_notes');
+
+function change_comment_email_notes( $defaults ) {
+    $defaults['comment_notes_before'] = '<p class="comment-notes"><span id="email-notes">メールアドレスの入力は任意です！</span></p>';
+    return $defaults;
+}
+
+// コメントからEmailとウェブサイトを削除
+function my_comment_form_remove($arg) {
+$arg['url'] = '';
+$arg['email'] = '';
+return $arg;
+}
+add_filter('comment_form_default_fields', 'my_comment_form_remove');
+
+// 「メールアドレスが公開されることはありません」を削除
+function my_comment_form_before( $defaults){
+$defaults['comment_notes_before'] = '';
+return $defaults;
+}
+add_filter( "comment_form_defaults", "my_comment_form_before");
+
+// 「HTMLタグと属性が使えます…」を削除
+function my_comment_form_after($args){
+$args['comment_notes_after'] = '';
+return $args;
+}
+add_filter("comment_form_defaults","my_comment_form_after");
+
+function breadcrumb() {
+    if ( !is_front_page() && !is_home() ) :
+        $sep = ' > ';
+        echo '<div class="breadcrumb"><a href="' . get_bloginfo('url') . '" >HOME</a>';
+        echo $sep;
+
+        if( is_singular() ) {
+                if ( is_single() ) {
+                        $cat = get_the_category();
+                        echo get_category_parents($cat[0], true, $sep);
+                }
+                the_title();
+                echo '</div>';
+        }
+ 
+	endif;
+}

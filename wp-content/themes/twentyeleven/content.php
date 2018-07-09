@@ -41,22 +41,25 @@
                         -->
 		</header><!-- .entry-header -->
 
-		<?php if ( is_search() ) : // Only display Excerpts for Search ?>
-		<div class="entry-summary">
-			<?php the_excerpt(); ?>
-		</div><!-- .entry-summary -->
-		<?php else : ?>
-		<div class="entry-content">
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?>
-			<?php
+                <?php //記事ごとの本文を非表示?>
+		<?php //if ( is_search() ) : // Only display Excerpts for Search ?>
+		<!--<div class="entry-summary">-->
+			<?php //the_excerpt(); ?>
+		<!--</div>--><!-- .entry-summary -->
+		<?php //else : ?>
+		<!--<div class="entry-content">-->
+			<?php //the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?>
+			<?php /*
 			wp_link_pages(
 				array(
 					'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>',
 					'after'  => '</div>',
 				)
 			);
-?>
-		</div><!-- .entry-content -->
-		<?php endif; ?>
+                        */ ?>
+		<!--</div>--><!-- .entry-content -->
+		<?php //endif; ?>
 
 	</article><!-- #post-<?php the_ID(); ?> -->
+        <hr style="padding:0px;margin: 0px">
+

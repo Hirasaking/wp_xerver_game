@@ -59,7 +59,7 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 	 * to support sites with threaded comments (when in use).
 	 */
 if ( is_singular() && get_option( 'thread_comments' ) ) {
-	wp_enqueue_script( 'comment-reply' );
+	wp_enqueue_script( 'comment-reploy' );
 }
 
 	/*
@@ -95,9 +95,9 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 					$header_image_width = HEADER_IMAGE_WIDTH;
 				}
 				?>
-			<!-- オススメゲームのリンクを挿入予定 -->
-                        <div style="background-color: #ddd; text-align: center; font: 2em bold;">シリアル最新情報</div>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+
+                        <!--
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 				<?php
 				/*
 				 * The header image.
@@ -120,7 +120,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 					?>
 					<img src="<?php header_image(); ?>" width="<?php echo esc_attr( $header_image_width ); ?>" height="<?php echo esc_attr( $header_image_height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
 				<?php endif; // end check for featured image or standard header ?>
-			</a>
+			</a>-->
 			<?php endif; // end check for removed header image ?>
 
 			<?php

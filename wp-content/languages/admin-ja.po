@@ -4948,12 +4948,12 @@ msgstr "\"%1$s\" (%2$s)"
 #. translators: 1: audio track title, 2: album title
 #: wp-admin/includes/media.php:312
 msgid "\"%1$s\" from %2$s."
-msgstr "\"%1$s\" (「%2$s」より)"
+msgstr "\"%1$s\" (「%2$s」)"
 
 #. translators: 1: audio track title, 2: album title, 3: artist name
 #: wp-admin/includes/media.php:309
 msgid "\"%1$s\" from %2$s by %3$s."
-msgstr "\"%1$s\" (%3$s 「%2$s」より)"
+msgstr "\"%1$s\" (%3$s 「%2$s」から)"
 
 #: wp-admin/includes/revision.php:366
 msgid "Revision by %s"
@@ -10909,7 +10909,7 @@ msgstr "[承認待ち]"
 #. is pending
 #: wp-admin/includes/dashboard.php:690
 msgid "From %1$s on %2$s %3$s"
-msgstr "%2$s に %1$s より %3$s"
+msgstr "%2$s に %1$s から %3$s"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:585
 #: wp-admin/includes/dashboard.php:641

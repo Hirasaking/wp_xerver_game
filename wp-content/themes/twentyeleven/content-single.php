@@ -11,7 +11,31 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 
+                <?php
+                
+                //パンくずリスト
+                breadcrumb();
 
+                
+                /* translators: used between list items, there is a space after the comma */
+                $categories_list = get_the_category_list( __( ', ', 'twentyeleven' ) );
+
+                /* translators: used between list items, there is a space after the comma */
+                $tag_list = get_the_tag_list( '', __( ', ', 'twentyeleven' ) );
+
+                /*        
+		if ( '' != $tag_list ) {
+			$utility_text = __( '1This entry was posted in %1$s and tagged %2$s by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyeleven' );
+		} elseif ( '' != $categories_list ) {
+			$utility_text = __( '2This entry was posted in %1$s by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyeleven' );
+		} else {
+			$utility_text = __( '3This entry was posted by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyeleven' );
+		}
+                 */
+
+                
+                
+                ?>
 		<!--アイキャッチ-->
 		<?php //the_post_thumbnail('thumbnail'); ?>
 		<!--<h1 class="entry-title"><?php the_title(); ?></h1></div>-->
@@ -25,8 +49,19 @@
 		    <div style="grid-row: 1 / 2; grid-column: 2 / 3; "><h1 class="entry-title"><?php the_title(); ?></h1></div>
                     <div style="grid-row: 2 / 3; grid-column: 2 / 3; "><?php echo $developer_name; ?></div>
 		</div>
-
                 
+                
+		<?php the_content(); ?>
+		<?php
+		wp_link_pages(
+			array(
+				'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>',
+				'after'  => '</div>',
+			)
+		);
+?>
+
+                                
                 
 		<!--どこかでＭＶＣに整える-->
 		<!--ダウンロードリンク-->
@@ -146,32 +181,8 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<div class="entry-content">
-		<?php the_content(); ?>
-		<?php
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>',
-				'after'  => '</div>',
-			)
-		);
-?>
-	</div><!-- .entry-content -->
-
 	<footer class="entry-meta">
 		<?php
-			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( __( ', ', 'twentyeleven' ) );
-
-			/* translators: used between list items, there is a space after the comma */
-			$tag_list = get_the_tag_list( '', __( ', ', 'twentyeleven' ) );
-		if ( '' != $tag_list ) {
-			$utility_text = __( 'This entry was posted in %1$s and tagged %2$s by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyeleven' );
-		} elseif ( '' != $categories_list ) {
-			$utility_text = __( 'This entry was posted in %1$s by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyeleven' );
-		} else {
-			$utility_text = __( 'This entry was posted by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyeleven' );
-		}
 
 			printf(
 				$utility_text,
