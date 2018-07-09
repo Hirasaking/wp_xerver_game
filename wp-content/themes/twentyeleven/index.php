@@ -14,7 +14,11 @@
 
 get_header(); ?>
 
-			<!-- オススメゲームのリンクを挿入予定 -->
+
+		<div id="primary">
+			<div id="content" role="main">
+
+                            			<!-- オススメゲームのリンクを挿入予定 -->
                             <p class="recommend">おすすめゲーム</p>
                             
                             <?php 
@@ -34,7 +38,8 @@ get_header(); ?>
                             <p style="padding:0%;text-align: center;"><?php echo $catch_copy; ?></p>
 
                             
-                            <p class="recommend">イベント＆特典情報</p>
+                            
+                                                        <p class="recommend">イベント＆特典情報</p>
                             <div style="text-align: center">
                                 <p class="thumnail-70">
                                 <a href="/"><?php echo get_the_post_thumbnail(52,array(80,80)); ?></a>
@@ -47,9 +52,6 @@ get_header(); ?>
 
 
                             <p class="recommend">最新シリアル付きゲーム</p>
-
-		<div id="primary">
-			<div id="content" role="main">
 
 			<?php if ( have_posts() ) : ?>
 
@@ -89,10 +91,13 @@ get_header(); ?>
                 
 <?php get_sidebar(); ?>
                 
-                <div id="primary">
-			<div id="content" role="main">
-                            koteiページ設置予定
-                	</div><!-- #content -->
+    <div id="primary">
+            <div id="content" role="main">
+                <p class="recommend">おすすめゲーム</p>
 
-		</div><!-- #primary -->
+                <?php af_wall(); ?>
+            </div><!-- #content -->
+
+    </div><!-- #primary -->
+
 <?php get_footer(); ?>
