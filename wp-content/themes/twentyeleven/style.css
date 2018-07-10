@@ -166,6 +166,16 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	padding: 0;
 	vertical-align: baseline;
 }
+
+h1, h2, h3, h4, h5, h6{
+	font-size: 130%;
+	padding: 0.3em;
+        border-left: 3px solid #bbb;
+    
+}
+
+
+
 :focus {/* remember to define focus styles! */
 	outline: 0;
 }

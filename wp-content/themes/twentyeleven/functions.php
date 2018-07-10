@@ -860,47 +860,32 @@ function breadcrumb() {
 
 function af_wall(){
 
-    //あとからMVCにする
-    $ad_catch1 = get_post_meta(1,'catch_copy',true); //キャッチコピー取得
-    $ad_url1 = get_permalink(1);//URL取得
-    $ad_thumbnail1 = get_the_post_thumbnail(1,array(60,60));
+    //管理画面から変更可能にする
+    $af_post = 12;
 
-    
+    //管理画面から変更可能にする
     echo'<p class="recommend">イチオシ厳選ゲーム</p>';
 
-    
-    echo 
-    '<div class="link_box_af">'
-        . '<a href="'. $ad_url1 .'"></a>'
-        . '<div style="display: grid; grid-template-rows: 70px; grid-template-columns: 70px 1fr;">'
-        . '<div style="grid-row: 1 / 2; grid-column: 1 / 1;text-align:center;margin-top:0.4em"><p class="thumnail-70">' . $ad_thumbnail1 .'<p></div>'
-        . '<div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 class="entry-title">' . $ad_catch1 . '</h1></div>'
-        . '</div>'
-    . '</div>';
-
-    echo '<hr style="padding:0px;margin:0 0 0.5em">';
-
+    for($i=1; $i<=3; $i++){
+        $post_id = 'post_id_' . $i;
+        $post_id = get_post_meta($af_post,$post_id,true);
+        $post_url = get_permalink($post_id);//URL取得
+        $ad_thumbnail = get_the_post_thumbnail($post_id,array(60,60));//サムネイル取得
+        $post_copy = get_post_meta($post_id,'catch_copy',true);//キャッチコピー取得
+        
+        //ＣＳＳから変更可能にする
         echo 
-    '<div class="link_box_af">'
-        . '<a href="'. $ad_url1 .'"></a>'
-        . '<div style="display: grid; grid-template-rows: 70px; grid-template-columns: 70px 1fr;">'
-        . '<div style="grid-row: 1 / 2; grid-column: 1 / 1;text-align:center;margin-top:0.4em"><p class="thumnail-70">' . $ad_thumbnail1 .'<p></div>'
-        . '<div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 class="entry-title">' . $ad_catch1 . '</h1></div>'
-        . '</div>'
-    . '</div>';
+        '<div class="link_box_af">'
+            . '<a href="'. $post_url .'"></a>'
+            . '<div style="display: grid; grid-template-rows: 70px; grid-template-columns: 70px 1fr;">'
+            . '<div style="grid-row: 1 / 2; grid-column: 1 / 1;text-align:center;margin-top:0.4em"><p class="thumnail-70">' . $ad_thumbnail .'<p></div>'
+            . '<div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 class="entry-title">' . $post_copy . '</h1></div>'
+            . '</div>'
+        . '</div>';
 
-    echo '<hr style="padding:0px;margin:0 0 0.5em">';
-
-    echo 
-    '<div class="link_box_af">'
-        . '<a href="'. $ad_url1 .'"></a>'
-        . '<div style="display: grid; grid-template-rows: 70px; grid-template-columns: 70px 1fr;">'
-        . '<div style="grid-row: 1 / 2; grid-column: 1 / 1;text-align:center;margin-top:0.4em"><p class="thumnail-70">' . $ad_thumbnail1 .'<p></div>'
-        . '<div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 class="entry-title">' . $ad_catch1 . '</h1></div>'
-        . '</div>'
-    . '</div>';
-
-
+        //ＣＳＳから変更可能にする
+        if($i < 3) echo '<hr style="padding:0px;margin:0 0 0.5em">';
+    }
 }
 
 // ページの追加

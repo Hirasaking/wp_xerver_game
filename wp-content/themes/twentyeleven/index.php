@@ -72,15 +72,13 @@ get_header(); ?>
 			</div><!-- #content -->
 
 		</div><!-- #primary -->
-
                 
-<?php get_sidebar(); ?>
-                
-    <div id="primary">
-            <div id="content" role="main">
-                <?php af_wall(); ?>
-            </div><!-- #content -->
+            <?php get_sidebar(); ?>
 
-    </div><!-- #primary -->
+                <div id="primary">
+                    <div id="content" role="main">
+                        <?php af_wall(); ?>
+                    </div><!-- #content -->
+                </div><!-- #primary -->
 
-<?php get_footer(); ?>
+            <?php get_footer(); ?>

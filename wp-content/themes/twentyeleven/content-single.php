@@ -128,7 +128,6 @@
 		$af_url_1 = get_post_meta(52, 'ad_1', true); //アフィリエイトＵＲＬ取得
 		?>
 
-                <?php af_wall(); ?>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
 
