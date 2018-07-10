@@ -861,7 +861,7 @@ function breadcrumb() {
 function af_wall(){
 
     //管理画面から変更可能にする
-    $af_post = 12;
+    $af_post = 3;
 
     //管理画面から変更可能にする
     echo'<p class="recommend">イチオシ厳選ゲーム</p>';
@@ -879,7 +879,7 @@ function af_wall(){
             . '<a href="'. $post_url .'"></a>'
             . '<div style="display: grid; grid-template-rows: 70px; grid-template-columns: 70px 1fr;">'
             . '<div style="grid-row: 1 / 2; grid-column: 1 / 1;text-align:center;margin-top:0.4em"><p class="thumnail-70">' . $ad_thumbnail .'<p></div>'
-            . '<div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 class="entry-title">' . $post_copy . '</h1></div>'
+            . '<div style="grid-row: 1 / 2; grid-column: 2 / 2;margin-left:2px"><h1 style="margin-top:0.1em;font-size:140%;font-weight:bold;">' . $post_copy . '</h1></div>'
             . '</div>'
         . '</div>';
 

@@ -44,9 +44,9 @@
 		<!--会社名-->
 		<?php $developer_name = SCF::get('developer_name'); ?>
 
-		<div style="display: grid; grid-template-rows: 40px 30px; grid-template-columns: 70px 1fr;">
-                    <div style="grid-row: 1 / 3; grid-column: 1 / 2;text-align:center;margin-top:0.4em"><p class="thumnail-70"><?php the_post_thumbnail(array(60,60)); ?><p></div>
-		    <div style="grid-row: 1 / 2; grid-column: 2 / 3; "><h1 class="entry-title"><?php the_title(); ?></h1></div>
+		<div style="margin-top:1em;display: grid; grid-template-rows: 40px 30px; grid-template-columns: 70px 1fr;">
+                    <div style="grid-row: 1 / 3; grid-column: 1 / 2;text-align:center;margin-top:0"><p class="thumnail-70"><?php the_post_thumbnail(array(60,60)); ?><p></div>
+		    <div style="grid-row: 1 / 2; grid-column: 2 / 3; "><h1 style="margin-top:0.1em;font-size:140%;font-weight:bold;"><?php the_title(); ?></h1></div>
                     <div style="grid-row: 2 / 3; grid-column: 2 / 3; "><?php echo $developer_name; ?></div>
 		</div>
                 

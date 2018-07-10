@@ -84,11 +84,11 @@ ac-container{
     margin: 0px auto;
 }
 .ac-container label{
-    width: 100%px;
+    width: 90%;
     text-align: center;
     background: #6e6eff;
     margin: auto;
-    padding: 10px 5px;
+    padding: 1em 0 ;
     position: relative;
     display: block;
     height: 40px;
@@ -166,15 +166,6 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	padding: 0;
 	vertical-align: baseline;
 }
-
-h1, h2, h3, h4, h5, h6{
-	font-size: 130%;
-	padding: 0.3em;
-        border-left: 3px solid #bbb;
-    
-}
-
-
 
 :focus {/* remember to define focus styles! */
 	outline: 0;
