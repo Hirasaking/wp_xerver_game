@@ -5,36 +5,10 @@ get_header(); ?>
 
 		<div id="primary">
 			<div id="content" role="main">
-
-                            			<!-- オススメゲームのリンクを挿入予定 -->
-                            <p class="recommend">おすすめゲーム</p>
                             
-                            <?php 
-                            $main_image  = get_post_meta(1,'main_image',false);
-                            $catch_copy  = get_post_meta(1,'catch_copy',false);
-                            
-                            $permalink = get_permalink(1);
-                            foreach($catch_copy as $catch_copy ){
-                            }
-
-                            foreach($main_image as $main_image ){
-                                $main_image = wp_get_attachment_url($main_image);
-                            }
-                            
-                            ?>
-                            <p style="padding:0 2% 0;margin:0px;text-align: center;"><a href="<?php echo $permalink; ?>"><img src="<?php echo $main_image; ?>" alt="" style="width:80%; height:; min-width:0; max-width:500px;" /></a></p>
-                            <p style="padding:0%;text-align: center;"><?php echo $catch_copy; ?></p>
-
-                            
-                            <p class="recommend">イベント＆特典情報</p>
-                            <div style="text-align: center">
-                                <p class="thumnail-70">
-                                <a href="/"><?php echo get_the_post_thumbnail(52,array(80,80)); ?></a>
-                                <a href="/"><?php echo get_the_post_thumbnail(52,array(80,80)); ?></a>
-                                <a href="/"><?php echo get_the_post_thumbnail(52,array(80,80)); ?></a>
-                                <a href="/"><?php echo get_the_post_thumbnail(52,array(80,80)); ?></a>
-                                </p>
-                            </div>
+                            <!-- オススメゲームのリンクを挿入予定 -->
+                            <?php top_main(); ?>
+                            <?php ivent_infomation(); ?>
 
                             <p class="recommend">最新シリアル付きゲーム</p>
 

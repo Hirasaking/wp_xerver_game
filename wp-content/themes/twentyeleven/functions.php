@@ -858,16 +858,58 @@ function breadcrumb() {
 	endif;
 }
 
+function top_main(){
+    //管理画面から変更可能にしたほうがいい。暫定で初期状態で存在する投稿ＩＤ１にしてある
+    $main_post = 1;
+    $main_post = get_post_meta($main_post,'main_title_1',true);
+    $post_url = get_permalink($main_post);//URL取得
+    $main_image  = get_post_meta($main_post,'main_image',false);
+    $main_copy  = get_post_meta($main_post,'catch_copy',false);
+    
+    foreach($main_image as $main_image ){
+        $main_image = wp_get_attachment_url($main_image);
+    }
+    
+    foreach($main_copy as $main_copy ){}
+
+    echo '<p class="recommend">おすすめゲーム</p>';
+    echo '<p style="padding:0 2% 0;margin:0px;text-align: center;">';
+    echo '<a href="' . $post_url . '"><img src="' . $main_image
+            .'" alt="" style="width:80%; height:; min-width:0; max-width:500px;" /></a></p>'
+            . '<p style="padding:0%;text-align: center;">'
+            . $main_copy . '</p>';
+}
+
+function ivent_infomation(){
+    //管理画面から変更可能にしたほうがいい。暫定で初期状態で存在する投稿ＩＤ１にしてある
+    echo'<p class="recommend">イベント＆特典情報</p>';
+
+    echo'<div class="ivent_info">';
+        echo'<p class="thumnail-70">';
+
+        $ivent_post = 1;
+
+        for($i=1; $i<=4; $i++){
+            $ivent_post_id = 'ivent_post_' . $i;//post_idを取得
+            $ivent_post_id = get_post_meta($ivent_post,$ivent_post_id,true);
+            $ivent_post_url = get_permalink($ivent_post_id);//URL取得
+            echo'<a href="'. $ivent_post_url .'">'. get_the_post_thumbnail($ivent_post_id,array(80,80)) . '</a>';
+        }
+    
+        echo'</p>';
+    echo'</div>';
+}
+
 function af_wall(){
 
-    //管理画面から変更可能にする
-    $af_post = 3;
+    //管理画面から変更可能にしたほうがいい。暫定で初期状態で存在する投稿ＩＤ１にしてある
+    $af_post = 1;
 
     //管理画面から変更可能にする
     echo'<p class="recommend">イチオシ厳選ゲーム</p>';
 
-    for($i=1; $i<=3; $i++){
-        $post_id = 'post_id_' . $i;
+        for($i=1; $i<=3; $i++){
+        $post_id = 'post_id_' . $i;//post_idを取得
         $post_id = get_post_meta($af_post,$post_id,true);
         $post_url = get_permalink($post_id);//URL取得
         $ad_thumbnail = get_the_post_thumbnail($post_id,array(60,60));//サムネイル取得
@@ -883,7 +925,6 @@ function af_wall(){
             . '</div>'
         . '</div>';
 
-        //ＣＳＳから変更可能にする
         if($i < 3) echo '<hr style="padding:0px;margin:0 0 0.5em">';
     }
 }

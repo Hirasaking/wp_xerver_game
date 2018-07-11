@@ -25,7 +25,7 @@ p.recommend {
 p.thumnail-70 img {
     border-radius: 5px;
     margin:0px;
-    padding:1px;
+    padding:3px;
 }
 
 .breadcrumb{
@@ -33,6 +33,16 @@ p.thumnail-70 img {
     padding:0.5em 0.5em;
     margin-left: 2px;
     border-left:solid 5px #6e6eff;
+}
+
+/* ivent infomation
+------------------------------------------------------*/
+.ivent_info{
+    text-align: center;
+}
+
+.ivent_info img{
+    margin: 5px;
 }
 
 /* download-button
