@@ -15,7 +15,6 @@
                 
                 //パンくずリスト
                 breadcrumb();
-
                 
                 /* translators: used between list items, there is a space after the comma */
                 $categories_list = get_the_category_list( __( ', ', 'twentyeleven' ) );
@@ -60,8 +59,8 @@
 			)
 		);
 ?>
-
-                                
+                <?php the_recommend_point(); ?>
+		<?php the_impression(); ?>
                 
 		<!--どこかでＭＶＣに整える-->
 		<!--ダウンロードリンク-->
@@ -95,7 +94,7 @@
 			*/
 		?>
 
-		<div class="link_box"><a href="<?php echo $download_url; ?>"></a>ダウンロード</div>
+		<div class="link_box"><a href="<?php echo $download_url; ?>"></a>公式サイト</div>
 		<div class="link_box"><a href="#comments"></a>シリアル交換掲示板</div>
 
 		<div class="ac-container">

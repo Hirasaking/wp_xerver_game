@@ -76,25 +76,6 @@ function get_footer( $name = null ) {
 	locate_template( $templates, true );
 }
 
-function get_sarchform( $name = null ) {
-	/**
-	 * Fires before the footer template file is loaded.
-	 *
-	 * @since 2.1.0
-	 * @since 2.8.0 $name parameter added.
-	 *
-	 * @param string|null $name Name of the specific footer file to use. null for the default footer.
-	 */
-	do_action( 'get_serchform', $name );
-
-	$templates = array();
-	$name = (string) $name;
-	$templates[]    = 'searchform';
-
-	locate_template( $templates, true );
-}
-
-
 /**
  * Load sidebar template.
  *

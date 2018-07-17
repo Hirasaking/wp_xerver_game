@@ -50,6 +50,7 @@ class Smart_Custom_Fields_Field_Boolean extends Smart_Custom_Fields_Field_Base {
 	public function get_field( $index, $value ) {
 		$name     = $this->get_field_name_in_editor( $index );
 		$disabled = $this->get_disable_attribute( $index );
+		$value    = ( true === $value || 1 === $value || '1' === $value ) ? 1 : 0;
 
 		$true = sprintf(
 			'<label><input type="radio" name="%s" value="1" class="widefat" %s %s />%s ( true )</label>',
@@ -77,6 +78,8 @@ class Smart_Custom_Fields_Field_Boolean extends Smart_Custom_Fields_Field_Base {
 	 * @param int $field_key
 	 */
 	public function display_field_options( $group_key, $field_key ) {
+		$this->display_name_option( $group_key, $field_key );
+		$this->display_label_option( $group_key, $field_key );
 		?>
 		<tr>
 			<th><?php esc_html_e( 'Default', 'smart-custom-fields' ); ?></th>

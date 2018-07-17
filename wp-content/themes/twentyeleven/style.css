@@ -13,6 +13,53 @@ Text Domain: twentyeleven
 
 /* =Reset default browser CSS. Based on work by Eric Meyer.
 -------------------------------------------------------------- */
+
+.the_recommend_point{
+    margin:0.5em 0 0.5em 0;
+    border:solid 1px #f29429;
+    background-color: #ffddb7;
+}
+
+.the_recommend_point_title{
+    padding:5px;
+    margin:5px;
+    font-size: 120%;
+    text-align:center;
+    border-bottom:solid 1px #f29429;
+}
+
+.the_recommend_point_text{
+    padding:5px 5px 0px 5px;
+    font-weight:bold;
+}
+
+.the_impression{
+    margin:0.5em 0 0.5em 0;
+    border-radius: 5px;        /* CSS3草案 */  
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 5px;   /* Firefox用 */ 
+}
+
+.the_impression .title{
+    padding:5px;
+    background-color: #cccccc;
+    font-size: 120%;
+}
+
+.the_impression .subtitle{
+    padding:5px 5px 0px 5px;
+    font-weight:bold;
+    border-left:solid 1px #ccc;
+    border-right:solid 1px #ccc;
+}
+
+.the_impression .text{
+    padding:0px 5px 5px 5px;
+    border-left:solid 1px #ccc;
+    border-right:solid 1px #ccc;
+    border-bottom:solid 1px #ccc;
+}
+
 p.recommend {
     text-align: center;
     margin:0.5em 0 0.5em;
@@ -23,7 +70,7 @@ p.recommend {
 
 
 p.thumnail-70 img {
-    border-radius: 5px;
+    border-radius: 10px;
     margin:0px;
     padding:3px;
 }
@@ -247,6 +294,7 @@ body {
 .singular #primary {
 	margin: 0;
 }
+
 .singular #content,
 .left-sidebar.singular #content {
 	margin: 0 7.6%;
@@ -1224,6 +1272,15 @@ object {
 }
 .entry-header .comments-link .leave-reply {
 	visibility: hidden;
+}
+
+.entry-header h2 {
+        font-size:120%;
+        font-weight: bold;
+        position:relative;
+        padding:0.3em 0.3em;
+        margin: 0.2em 0px;
+        border-left:solid 5px #6e6eff;
 }
 
 /*

@@ -4,7 +4,7 @@
  * Version    : 1.2.0
  * Author     : inc2734
  * Created    : January 17, 2015
- * Modified   : June 4, 2016
+ * Modified   : June 04, 2018
  * License    : GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -75,18 +75,21 @@ class Smart_Custom_Fields_Field_Datepicker extends Smart_Custom_Fields_Field_Bas
 	public function settings_enqueue_scripts() {
 		global $wp_scripts;
 		$ui = $wp_scripts->query( 'jquery-ui-core' );
+
 		wp_enqueue_style(
 			'jquery.ui',
 			'//ajax.googleapis.com/ajax/libs/jqueryui/' . $ui->ver . '/themes/smoothness/jquery-ui.min.css',
 			array(),
 			$ui->ver
 		);
+
 		wp_enqueue_script( 'jquery-ui-datepicker' );
+
 		wp_enqueue_script(
 			SCF_Config::PREFIX . 'settings-datepicker',
-			plugins_url( '../../js/settings-datepicker.js', __FILE__ ),
+			plugins_url( SCF_Config::NAME ) . '/js/settings-datepicker.js',
 			array( 'jquery', 'jquery-ui-datepicker' ),
-			false,
+			filemtime( plugin_dir_path( dirname( __FILE__ ) . '/../../js/settings-datepicker.js' ) ),
 			true
 		);
 	}
@@ -120,6 +123,8 @@ class Smart_Custom_Fields_Field_Datepicker extends Smart_Custom_Fields_Field_Bas
 	 * @param int $field_key
 	 */
 	public function display_field_options( $group_key, $field_key ) {
+		$this->display_name_option( $group_key, $field_key );
+		$this->display_label_option( $group_key, $field_key );
 		?>
 		<tr>
 			<th><?php esc_html_e( 'Default', 'smart-custom-fields' ); ?></th>

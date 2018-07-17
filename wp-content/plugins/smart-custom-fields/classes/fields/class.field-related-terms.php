@@ -4,7 +4,7 @@
  * Version    : 1.5.1
  * Author     : inc2734
  * Created    : October 7, 2014
- * Modified   : February 20, 2017
+ * Modified   : June 04, 2018
  * License    : GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -51,16 +51,18 @@ class Smart_Custom_Fields_Field_Related_Terms extends Smart_Custom_Fields_Field_
 			SCF_Config::PREFIX . 'editor-relation-common',
 			plugins_url( SCF_Config::NAME ) . '/js/editor-relation-common.js',
 			array( 'jquery' ),
-			null,
+			filemtime( plugin_dir_path( dirname( __FILE__ ) . '/../../js/editor-relation-common.js' ) ),
 			true
 		);
+
 		wp_enqueue_script(
 			SCF_Config::PREFIX . 'editor-relation-taxonomies',
 			plugins_url( SCF_Config::NAME ) . '/js/editor-relation-taxonomies.js',
 			array( 'jquery' ),
-			null,
+			filemtime( plugin_dir_path( dirname( __FILE__ ) . '/../../js/editor-relation-taxonomies.js' ) ),
 			true
 		);
+
 		wp_localize_script( SCF_Config::PREFIX . 'editor-relation-taxonomies', 'smart_cf_relation_taxonomies', array(
 			'endpoint' => admin_url( 'admin-ajax.php' ),
 			'action'   => SCF_Config::PREFIX . 'relational-terms-search',
@@ -224,6 +226,8 @@ class Smart_Custom_Fields_Field_Related_Terms extends Smart_Custom_Fields_Field_
 	 * @param int $field_key
 	 */
 	public function display_field_options( $group_key, $field_key ) {
+		$this->display_name_option( $group_key, $field_key );
+		$this->display_label_option( $group_key, $field_key );
 		?>
 		<tr>
 			<th><?php esc_html_e( 'Taxonomies', 'smart-custom-fields' ); ?></th>

@@ -929,6 +929,25 @@ function af_wall(){
     }
 }
 
+function the_recommend_point(){
+    echo '<div class="the_recommend_point">';
+        echo '<div class="the_recommend_point_title">オススメポイント</div>';
+        echo '<div class="the_recommend_point_text"><img style="padding:0 3px 0 6px ;" src="wp-content/themes/twentyeleven/images/good.png">' . $point_1 = SCF::get('point_1') . '</div>';
+        echo '<div class="the_recommend_point_text"><img style="padding:0 3px 0 6px ;" src="wp-content/themes/twentyeleven/images/good.png">' . $point_2 = SCF::get('point_2') . '</div>';
+        echo '<div class="the_recommend_point_text"><img style="padding:0 3px 0 6px ;" src="wp-content/themes/twentyeleven/images/good.png">' . $point_3 = SCF::get('point_3') . '</div>';
+    echo '</div>';
+}
+
+
+function the_impression(){
+    echo'
+    <div class="the_impression">
+        <div class="title"><img style="padding:0 3px 0 6px ;" src="wp-content/themes/twentyeleven/images/comment-alpha.png">プレイした感想</div>'
+        . '<div class="subtitle">' . $post_impression_title = SCF::get('post_impression_title') . '</div>'
+        . '<div class="text">' . $post_impression = SCF::get('post_impression') . '</div>'
+    . '</div>';
+}
+
 // ページの追加
 add_action( 'admin_menu', 'register_my_custom_menu_page' );
 function register_my_custom_menu_page() {
@@ -944,3 +963,7 @@ function add_manual_page() {
 </div>
 <?php
 }
+
+@ini_set( 'max_execution_time', '100' );
+@ini_set( 'post_max_size', '50M');
+@ini_set( 'upload_max_size' , '30M' );

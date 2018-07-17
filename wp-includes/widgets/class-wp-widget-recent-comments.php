@@ -57,6 +57,15 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 		<?php
 	}
 
+	/**
+	 * Outputs the content for the current Recent Comments widget instance.
+	 *
+	 * @since 2.8.0
+	 *
+	 * @param array $args     Display arguments including 'before_title', 'after_title',
+	 *                        'before_widget', and 'after_widget'.
+	 * @param array $instance Settings for the current Recent Comments widget instance.
+	 */
 	public function widget( $args, $instance ) {
 		if ( ! isset( $args['widget_id'] ) )
 			$args['widget_id'] = $this->id;
@@ -72,13 +81,24 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 		if ( ! $number )
 			$number = 5;
 
+		/**
+		 * Filters the arguments for the Recent Comments widget.
+		 *
+		 * @since 3.4.0
+		 * @since 4.9.0 Added the `$instance` parameter.
+		 *
+		 * @see WP_Comment_Query::query() for information on accepted arguments.
+		 *
+		 * @param array $comment_args An array of arguments used to retrieve the recent comments.
+		 * @param array $instance     Array of settings for the current widget.
+		 */
 		$comments = get_comments( apply_filters( 'widget_comments_args', array(
 			'number'      => $number,
 			'status'      => 'approve',
 			'post_status' => 'publish'
 		), $instance ) );
 
-                $output .= $args['before_widget'];
+		$output .= $args['before_widget'];
 		if ( $title ) {
 			$output .= $args['before_title'] . $title . $args['after_title'];
 		}
@@ -97,7 +117,6 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 					'<a href="' . esc_url( get_comment_link( $comment ) ) . '">' . get_the_title( $comment->comment_post_ID ) . '</a>'
 				);
 				$output .= '</li>';
-                                
 			}
 		}
 		$output .= '</ul>';
