@@ -18,6 +18,9 @@ Text Domain: twentyeleven
     margin:0.5em 0 0.5em 0;
     border:solid 1px #f29429;
     background-color: #ffddb7;
+    border-radius: 8px;        /* CSS3草案 */  
+    -webkit-border-radius: 8px;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 8px;   /* Firefox用 */ 
 }
 
 .the_recommend_point_title{
@@ -35,29 +38,31 @@ Text Domain: twentyeleven
 
 .the_impression{
     margin:0.5em 0 0.5em 0;
-    border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
-    -moz-border-radius: 5px;   /* Firefox用 */ 
+    border:solid 1px #ccc;
+    border-radius: 8px;        /* CSS3草案 */  
+    -webkit-border-radius: 8px;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 8px;   /* Firefox用 */ 
 }
 
-.the_impression .title{
+.the_impression_title{
     padding:5px;
     background-color: #cccccc;
     font-size: 120%;
+    border-top-left-radius: 8px;        /* CSS3草案 */  
+    border-top-right-radius: 8px;        /* CSS3草案 */
+    -webkit-border-top-left-radius:8px;    /* Safari,Google Chrome用 */  
+    -webkit-border-top-right-radius:8px;    /* Safari,Google Chrome用 */  
+    -moz-border-top-left-radius: 8px;   /* Firefox用 */ 
+    -moz-border-top-right-radius: 8px;   /* Firefox用 */ 
 }
 
-.the_impression .subtitle{
+.the_impression_subtitle{
     padding:5px 5px 0px 5px;
     font-weight:bold;
-    border-left:solid 1px #ccc;
-    border-right:solid 1px #ccc;
 }
 
-.the_impression .text{
+.the_impression_text{
     padding:0px 5px 5px 5px;
-    border-left:solid 1px #ccc;
-    border-right:solid 1px #ccc;
-    border-bottom:solid 1px #ccc;
 }
 
 p.recommend {

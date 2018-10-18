@@ -27,7 +27,7 @@ get_header(); ?>
 
 					<?php comments_template( '', true ); ?>
 
-                        <?php af_wall(); ?>
+                                        <?php af_wall(); //ランキング３つ挿入 ?>
 				<?php endwhile; // end of the loop. ?>
 
 			</div><!-- #content -->

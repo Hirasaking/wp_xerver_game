@@ -653,7 +653,7 @@ if ( ! function_exists( 'twentyeleven_comment' ) ) :
 
 						/* translators: 1: comment author, 2: date and time */
 						printf(
-							__( '%1$s on %2$s <span class="says">said:</span>', 'twentyeleven' ),
+							__( '%1$s on %2$s <span class="says">Said:</span>', 'twentyeleven' ),
 							sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
 							sprintf(
 								'<a href="%1$s"><time datetime="%2$s">%3$s</time></a>',
@@ -942,9 +942,9 @@ function the_recommend_point(){
 function the_impression(){
     echo'
     <div class="the_impression">
-        <div class="title"><img style="padding:0 3px 0 6px ;" src="wp-content/themes/twentyeleven/images/comment-alpha.png">プレイした感想</div>'
-        . '<div class="subtitle">' . $post_impression_title = SCF::get('post_impression_title') . '</div>'
-        . '<div class="text">' . $post_impression = SCF::get('post_impression') . '</div>'
+        <div class="the_impression_title"><img style="padding:0 3px 0 6px ;" src="wp-content/themes/twentyeleven/images/comment-alpha.png">プレイした感想</div>'
+        . '<div class="the_impression_subtitle">' . $post_impression_title = SCF::get('post_impression_title') . '</div>'
+        . '<div class="the_impression_text">' . $post_impression = SCF::get('post_impression') . '</div>'
     . '</div>';
 }
 
@@ -967,3 +967,13 @@ function add_manual_page() {
 @ini_set( 'max_execution_time', '100' );
 @ini_set( 'post_max_size', '50M');
 @ini_set( 'upload_max_size' , '30M' );
+
+
+// オリジナル function comment_form in /wp-includes/comment-template.php
+// 「コメントを残す」の文言を変更
+add_filter( 'comment_form_defaults', 'my_title_reply');
+
+function my_title_reply( $defaults){
+    $defaults['title_reply'] = '交換内容を投稿する';
+    return $defaults;
+}

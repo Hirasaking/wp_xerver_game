@@ -11650,7 +11650,7 @@ msgstr "%s にコメントする"
 
 #: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2248
 msgid "Leave a Reply"
-msgstr "コメントを残す"
+msgstr "交換希望を投稿する"
 
 #: wp-includes/comment-template.php:1781
 msgid "Click here to cancel reply."

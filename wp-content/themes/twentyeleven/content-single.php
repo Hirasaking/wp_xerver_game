@@ -64,8 +64,23 @@
                 
 		<!--どこかでＭＶＣに整える-->
 		<!--ダウンロードリンク-->
-		<?php $download_url = SCF::get('download_url'); ?>
-		<!--<div class="download-button"><a href="<?php echo $download_url; ?>">ダウンロード</a></div>-->
+
+                <?php
+                //デバイス別URL読み込み
+                $download_ios = SCF::get('download_ios');
+                $download_android = SCF::get('download_android');
+                $download_pc = SCF::get('download_url');
+
+                //UA振り分け処理
+                $ua = $_SERVER['HTTP_USER_AGENT'];
+                if($download_ios !== '' && (strpos($ua,'iPhone') !== false)||(strpos($ua,'iPod') !== false)||(strpos($ua,'iPad') !== false)) {
+                    $download_url = $download_ios;
+                }elseif($download_android !== '' && strpos($ua,'Android') !== false){
+                    $download_url = $download_android;
+                }else{
+                    $download_url = $download_pc;
+                }
+                ?>  
 
 		<?php
 			/* translators: used between list items, there is a space after the comma */
@@ -95,7 +110,8 @@
 		?>
 
 		<div class="link_box"><a href="<?php echo $download_url; ?>"></a>公式サイト</div>
-		<div class="link_box"><a href="#comments"></a>シリアル交換掲示板</div>
+
+                <div class="link_box"><a href="#comments"></a>シリアル交換掲示板</div>
 
 		<div class="ac-container">
 			<input id="ac-1" name="accordion-1" type="checkbox" />
@@ -168,7 +184,7 @@
 						<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', 'twentyeleven' ), get_the_author() ); ?>
 					</a>
 				</div><!-- #author-link	-->
-			</div><!-- #author-description -->
+			</div><!-- #author-description -->sssssssssssssssssssssssssssssssssssssssssssssssssssss
 		</div><!-- #author-info -->
 		<?php endif; ?>
 	</footer><!-- .entry-meta -->
